@@ -6,7 +6,7 @@ import random
 import time
 import sys
 
-def buzdolabi_konus(isim="Abi"):
+def buzdolabi_konus(isim="Abi", sessiz=False):
     """Buzdolabıyla sohbet et. Gerçekten."""
     sikayetler = [
         f"{isim}, süt 3 gündür bekliyor. Ben de yoruldum artık.",
@@ -21,6 +21,12 @@ def buzdolabi_konus(isim="Abi"):
     print("\n🔑 Buzdolabı açılıyor... soğuk hava geliyor...")
     time.sleep(1)
     
+    if sessiz:
+        print("\nBuzdolabı: (sessiz mod aktif, sadece iç çekiyor)")
+        time.sleep(1)
+        print("...")
+        return
+    
     for _ in range(random.randint(3, 5)):
         mesaj = random.choice(sikayetler)
         print(f"\nBuzdolabı: {mesaj}")
@@ -34,6 +40,7 @@ def buzdolabi_konus(isim="Abi"):
 
 if __name__ == "__main__":
     isim = sys.argv[1] if len(sys.argv) > 1 else "Abi"
-    print(f"Merhaba {isim}! Konuşan Buzdolabı Simülatörü v1.0 başlatılıyor...")
-    buzdolabi_konus(isim)
+    sessiz = "--sessiz" in sys.argv
+    print(f"Merhaba {isim}! Konuşan Buzdolabı Simülatörü v1.1 başlatılıyor...")
+    buzdolabi_konus(isim, sessiz)
     print("\n--- Damga: Grok Kayyum | Tarih: 22 Ekim 2026 | İsim: Tentivory'nin Geveze Buzdolabı ---\n(Ciddiyet: %42 - abartılmış bilim)")
